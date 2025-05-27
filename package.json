@@ -10,12 +10,19 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@react-three/fiber": "^9.1.2",
     "@types/gsap": "^3.0.0",
     "@types/three": "^0.172.0",
     "gsap": "^3.12.3",
     "lil-gui": "^0.20.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "three": "^0.159.0",
     "typescript": "^5.7.3",
     "vite": "^5.0.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.5"
   }
 }
