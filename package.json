@@ -10,6 +10,9 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^7.1.0",
     "@react-three/fiber": "^9.1.2",
     "@types/gsap": "^3.0.0",
     "@types/three": "^0.172.0",
@@ -17,7 +20,8 @@
     "lil-gui": "^0.20.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "three": "^0.159.0",
+    "three": "^0.174.0",
+    "tss-react": "^4.9.18",
     "typescript": "^5.7.3",
     "vite": "^5.0.4"
   },
