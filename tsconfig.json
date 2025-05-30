@@ -5,6 +5,7 @@
         "jsx": "react-jsx",
         "strict": true,
         "outDir": "./dist",
+        "resolveJsonModule": true,  
         "moduleResolution": "node",
         "esModuleInterop": true,
         "skipLibCheck": true,
