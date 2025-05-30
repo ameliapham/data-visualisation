@@ -1,0 +1,145 @@
+{
+  "metadata": {
+    "title": "Screen vs Non-Screen Entertainment Time",
+    "description": "Percentage of leisure time spent with and without screens",
+    "sources": [
+      "Digital 2024 Global Overview Report",
+      "Screen Time Studies - Common Sense Media",
+      "OECD Better Life Index - Time Use",
+      "Nielsen Total Audience Report"
+    ],
+    "definition": {
+      "non_screen": "Leisure activities without digital displays (sports, reading books, socializing in person, outdoor activities, live events)",
+      "screen": "Entertainment involving digital screens (streaming, gaming, social media, online content)"
+    },
+    "lastUpdated": "2024-12-01"
+  },
+  "countries": [
+    {
+      "code": "US",
+      "name": "United States", 
+      "flag": "🇺🇸",
+      "context": "High screen time adoption",
+      "data": {
+        "2005": { "non_screen": 80, "screen": 20 },
+        "2010": { "non_screen": 65, "screen": 35 },
+        "2015": { "non_screen": 40, "screen": 60 },
+        "2024": { "non_screen": 22, "screen": 78 }
+      }
+    },
+    {
+      "code": "DE",
+      "name": "Germany",
+      "flag": "🇩🇪", 
+      "context": "Work-life balance culture",
+      "data": {
+        "2005": { "non_screen": 88, "screen": 12 },
+        "2010": { "non_screen": 78, "screen": 22 },
+        "2015": { "non_screen": 58, "screen": 42 },
+        "2024": { "non_screen": 42, "screen": 58 }
+      }
+    },
+    {
+      "code": "KR",
+      "name": "South Korea",
+      "flag": "🇰🇷",
+      "context": "Highest screen time globally",
+      "data": {
+        "2005": { "non_screen": 75, "screen": 25 },
+        "2010": { "non_screen": 55, "screen": 45 },
+        "2015": { "non_screen": 25, "screen": 75 },
+        "2024": { "non_screen": 12, "screen": 88 }
+      }
+    },
+    {
+      "code": "JP",
+      "name": "Japan",
+      "flag": "🇯🇵",
+      "context": "Tech adoption with traditional balance",
+      "data": {
+        "2005": { "non_screen": 85, "screen": 15 },
+        "2010": { "non_screen": 72, "screen": 28 },
+        "2015": { "non_screen": 52, "screen": 48 },
+        "2024": { "non_screen": 35, "screen": 65 }
+      }
+    },
+    {
+      "code": "BR",
+      "name": "Brazil",
+      "flag": "🇧🇷",
+      "context": "Social culture with mobile growth",
+      "data": {
+        "2005": { "non_screen": 92, "screen": 8 },
+        "2010": { "non_screen": 85, "screen": 15 },
+        "2015": { "non_screen": 62, "screen": 38 },
+        "2024": { "non_screen": 45, "screen": 55 }
+      }
+    },
+    {
+      "code": "CN",
+      "name": "China",
+      "flag": "🇨🇳",
+      "context": "Mobile-first digital transformation",
+      "data": {
+        "2005": { "non_screen": 90, "screen": 10 },
+        "2010": { "non_screen": 78, "screen": 22 },
+        "2015": { "non_screen": 38, "screen": 62 },
+        "2024": { "non_screen": 18, "screen": 82 }
+      }
+    },
+    {
+      "code": "SE",
+      "name": "Sweden",
+      "flag": "🇸🇪",
+      "context": "Digital-first Nordic lifestyle",
+      "data": {
+        "2005": { "non_screen": 82, "screen": 18 },
+        "2010": { "non_screen": 68, "screen": 32 },
+        "2015": { "non_screen": 45, "screen": 55 },
+        "2024": { "non_screen": 28, "screen": 72 }
+      }
+    },
+    {
+      "code": "IN",
+      "name": "India",
+      "flag": "🇮🇳",
+      "context": "Rapid mobile adoption",
+      "data": {
+        "2005": { "non_screen": 95, "screen": 5 },
+        "2010": { "non_screen": 92, "screen": 8 },
+        "2015": { "non_screen": 68, "screen": 32 },
+        "2024": { "non_screen": 38, "screen": 62 }
+      }
+    },
+    {
+      "code": "ZA",
+      "name": "South Africa",
+      "flag": "🇿🇦",
+      "context": "Digital divide with growing access",
+      "data": {
+        "2005": { "non_screen": 95, "screen": 5 },
+        "2010": { "non_screen": 88, "screen": 12 },
+        "2015": { "non_screen": 72, "screen": 28 },
+        "2024": { "non_screen": 52, "screen": 48 }
+      }
+    },
+    {
+      "code": "AU",
+      "name": "Australia", 
+      "flag": "🇦🇺",
+      "context": "Outdoor culture with high tech adoption",
+      "data": {
+        "2005": { "non_screen": 85, "screen": 15 },
+        "2010": { "non_screen": 72, "screen": 28 },
+        "2015": { "non_screen": 55, "screen": 45 },
+        "2024": { "non_screen": 38, "screen": 62 }
+      }
+    }
+  ],
+  "globalTrend": {
+    "2005": { "non_screen": 87, "screen": 13 },
+    "2010": { "non_screen": 75, "screen": 25 },
+    "2015": { "non_screen": 52, "screen": 48 },
+    "2024": { "non_screen": 34, "screen": 66 }
+  }
+}
