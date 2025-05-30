@@ -1,6 +1,6 @@
 import { Text } from "@react-three/drei";
 
-interface YearProps {
+type YearProps = {
   year: string;
   position: [number, number, number];
   cubeSize: [number, number, number];
