@@ -10,22 +10,20 @@ import { Controls } from "./Controls";
 import { useDataStore } from "./hooks/useDataStore";
 import { Year } from "./Year";
 import * as THREE from "three";
+import { Suspense } from "react";
 
 export function App() {
   const { classes } = useStyles();
-  const { selectedCountry, getTimelineData } = useDataStore();
+  const {selectedCountry, getTimelineData, years: storeYears,} = useDataStore();
 
-  const platformTexture = useLoader(
-    THREE.TextureLoader, "/textures/alpha.webp");
+  const platformTexture = useLoader(THREE.TextureLoader, "/textures/alpha.webp");
 
   const timelineData = selectedCountry
     ? getTimelineData()
-    : [
-        { year: "2005", data: { non_screen: 80, screen: 20 } },
-        { year: "2010", data: { non_screen: 65, screen: 35 } },
-        { year: "2015", data: { non_screen: 40, screen: 60 } },
-        { year: "2024", data: { non_screen: 22, screen: 78 } },
-      ];
+    : storeYears.map((year) => ({
+        year: year,
+        data: { non_screen: 0, screen: 0 },
+      }));
 
   const shakeConfig = {
     maxYaw: 0.05,
@@ -55,16 +53,17 @@ export function App() {
         <Controls />
         <Canvas
           shadows
-          camera={{
-            position: initialCameraPosition,
-            fov: 60,
-          }}
+          camera={{position: initialCameraPosition, fov: 60,}}
         >
+          <Suspense fallback={null}>
+            <Environment background={false} preset="dawn" />
+          </Suspense>
+
           <color attach="background" args={["#FFB6C1"]} />
-          <Environment background={false} preset="warehouse" />
+
           <ambientLight intensity={0} />
           <directionalLight
-            position={[8, 8, 5]}
+            position={[-8, 8, 5]}
             intensity={1}
             castShadow
             shadow-mapSize-width={2048}
@@ -76,8 +75,13 @@ export function App() {
             shadow-camera-bottom={-15}
           />
 
+          <Cube position={[-100, -100, -100]} size={[0.01, 0.01, 0.01]} />
+          
           <DampedOrbitControls />
-          <CameraRigController cameraBaseY={initialCameraPosition[1]} cameraBaseZ={initialCameraPosition[2]}/> 
+          <CameraRigController
+            cameraBaseY={initialCameraPosition[1]}
+            cameraBaseZ={initialCameraPosition[2]}
+          />
           <CameraShake {...shakeConfig} />
 
           <mesh
@@ -86,13 +90,13 @@ export function App() {
             receiveShadow
           >
             <planeGeometry args={[50, 50]} />
-            <meshStandardMaterial 
-              color="#F1B3C1" 
+            <meshStandardMaterial
+              color="#F1B3C1"
               alphaMap={platformTexture}
               transparent
             />
           </mesh>
-          
+
           {timelineData.map((item, index) => {
             const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
             const cubeDimensions: [number, number, number] = [2, 2, 2];
