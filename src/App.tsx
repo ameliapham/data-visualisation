@@ -2,9 +2,9 @@ import { tss } from "tss-react/mui";
 import { GlobalStyles } from "tss-react";
 import { Canvas } from "@react-three/fiber";
 import { Cube } from "./Cube";
-import { OrbitControls, Environment } from "@react-three/drei";
+import { OrbitControls, Environment, CameraShake } from "@react-three/drei";
 import { Water } from "./Water";
-import { Controls } from "./Controls"; 
+import { Controls } from "./Controls";
 import { useDataStore } from "./hooks/useDataStore";
 import { Year } from "./Year";
 
@@ -21,6 +21,17 @@ export function App() {
         { year: "2024", data: { non_screen: 22, screen: 78 } },
       ];
 
+  const shakeConfig = {
+    maxYaw: 0.05, 
+    maxPitch: 0.05, 
+    maxRoll: 0.03,
+    yawFrequency: 0.3,
+    pitchFrequency: 0.3,
+    rollFrequency: 0.25,
+    intensity: 0.8,
+    decay: false,
+  };
+
   return (
     <>
       <GlobalStyles
@@ -33,15 +44,44 @@ export function App() {
         }}
       />
       <div className={classes.root}>
-        <Controls /> 
-        <Canvas camera={{ position: [10, 6, 8], fov: 60 }}>
+        <Controls />
+        <Canvas 
+          shadows 
+          camera={{ 
+            position: [0, 4, 10],
+            fov: 60 
+          }}
+        >
+          <color attach="background" args={["#FFB6C1"]} />
           <Environment background={false} preset="warehouse" />
-          <ambientLight intensity={0.4} />
-          <directionalLight position={[5, 5, 5]} intensity={0.5} castShadow />
-          <OrbitControls />
+          <ambientLight intensity={0} />
+          <directionalLight
+            position={[8, 8, 5]}
+            intensity={1}
+            castShadow
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+            shadow-camera-far={50}
+            shadow-camera-left={-15}
+            shadow-camera-right={15}
+            shadow-camera-top={15}
+            shadow-camera-bottom={-15}
+          />
+          <OrbitControls makeDefault/>
+
+          <CameraShake {...shakeConfig} />
+
+          <mesh
+            position={[0, -3.2, 0]}
+            rotation={[-Math.PI / 2, 0, 0]}
+            receiveShadow
+          >
+            <planeGeometry args={[50, 50]} />
+            <meshStandardMaterial color="#F1B3C1" />
+          </mesh>
 
           {timelineData.map((item, index) => {
-            const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0];
+            const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
             const cubeDimensions: [number, number, number] = [2, 2, 2];
 
             return (
