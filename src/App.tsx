@@ -84,17 +84,14 @@ export function App() {
             <planeGeometry args={[50, 50]} />
             <meshStandardMaterial color="#F1B3C1" />
           </mesh>
+          
           {timelineData.map((item, index) => {
-            const cubePosition: [number, number, number] = [
-              index * 3 - 4.5,
-              -2,
-              0,
-            ];
+            const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
             const cubeDimensions: [number, number, number] = [2, 2, 2];
 
             return (
               <group key={item.year}>
-                <Cube position={cubePosition} size={[2, 2, 2]} />
+                <Cube position={cubePosition} size={cubeDimensions} />
                 <Water
                   position={cubePosition}
                   size={[2, 2, 2]}
