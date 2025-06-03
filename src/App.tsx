@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { Cube } from "./Cube";
 import { OrbitControls, Environment } from "@react-three/drei";
 import { Water } from "./Water";
+import { Controls } from "./Controls"; 
 import { useDataStore } from "./hooks/useDataStore";
 import { Year } from "./Year";
 
@@ -32,8 +33,9 @@ export function App() {
         }}
       />
       <div className={classes.root}>
+        <Controls /> 
         <Canvas camera={{ position: [10, 6, 8], fov: 60 }}>
-          <Environment background={false} preset="sunset" />
+          <Environment background={false} preset="warehouse" />
           <ambientLight intensity={0.4} />
           <directionalLight position={[5, 5, 5]} intensity={0.5} castShadow />
           <OrbitControls />
