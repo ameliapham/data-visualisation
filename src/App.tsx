@@ -1,6 +1,6 @@
 import { tss } from "tss-react/mui";
 import { GlobalStyles } from "tss-react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { Cube } from "./Cube";
 import { CameraShake, Environment } from "@react-three/drei";
 import { DampedOrbitControls } from "./DampedOrbitControls";
@@ -9,10 +9,14 @@ import { Water } from "./Water";
 import { Controls } from "./Controls";
 import { useDataStore } from "./hooks/useDataStore";
 import { Year } from "./Year";
+import * as THREE from "three";
 
 export function App() {
   const { classes } = useStyles();
   const { selectedCountry, getTimelineData } = useDataStore();
+
+  const platformTexture = useLoader(
+    THREE.TextureLoader, "/textures/alpha.webp");
 
   const timelineData = selectedCountry
     ? getTimelineData()
@@ -82,7 +86,11 @@ export function App() {
             receiveShadow
           >
             <planeGeometry args={[50, 50]} />
-            <meshStandardMaterial color="#F1B3C1" />
+            <meshStandardMaterial 
+              color="#F1B3C1" 
+              alphaMap={platformTexture}
+              transparent
+            />
           </mesh>
           
           {timelineData.map((item, index) => {
@@ -94,7 +102,7 @@ export function App() {
                 <Cube position={cubePosition} size={cubeDimensions} />
                 <Water
                   position={cubePosition}
-                  size={[2, 2, 2]}
+                  size={cubeDimensions}
                   nonScreenPercent={item.data.non_screen}
                   screenPercent={item.data.screen}
                 />
