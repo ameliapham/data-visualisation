@@ -20,6 +20,7 @@ export function Cube({
       args={size}
       radius={0.1}
       smoothness={4}
+      castShadow
     >
       <MeshTransmissionMaterial
         backside={true}
