@@ -57,67 +57,67 @@ export function App() {
         >
           <Suspense fallback={null}>
             <Environment background={false} preset="dawn" />
-          </Suspense>
 
-          <color attach="background" args={["#FFB6C1"]} />
+            <color attach="background" args={["#FFB6C1"]} />
 
-          <ambientLight intensity={0} />
-          <directionalLight
-            position={[-8, 8, 5]}
-            intensity={1}
-            castShadow
-            shadow-mapSize-width={2048}
-            shadow-mapSize-height={2048}
-            shadow-camera-far={50}
-            shadow-camera-left={-15}
-            shadow-camera-right={15}
-            shadow-camera-top={15}
-            shadow-camera-bottom={-15}
-          />
-
-          <Cube position={[-100, -100, -100]} size={[0.01, 0.01, 0.01]} />
-          
-          <DampedOrbitControls />
-          <CameraRigController
-            cameraBaseY={initialCameraPosition[1]}
-            cameraBaseZ={initialCameraPosition[2]}
-          />
-          <CameraShake {...shakeConfig} />
-
-          <mesh
-            position={[0, -3.2, 0]}
-            rotation={[-Math.PI / 2, 0, 0]}
-            receiveShadow
-          >
-            <planeGeometry args={[50, 50]} />
-            <meshStandardMaterial
-              color="#F1B3C1"
-              alphaMap={platformTexture}
-              transparent
+            <ambientLight intensity={0} />
+            <directionalLight
+              position={[-8, 8, 5]}
+              intensity={1}
+              castShadow
+              shadow-mapSize-width={2048}
+              shadow-mapSize-height={2048}
+              shadow-camera-far={50}
+              shadow-camera-left={-15}
+              shadow-camera-right={15}
+              shadow-camera-top={15}
+              shadow-camera-bottom={-15}
             />
-          </mesh>
 
-          {timelineData.map((item, index) => {
-            const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
-            const cubeDimensions: [number, number, number] = [2, 2, 2];
+            <Cube position={[-100, -100, -100]} size={[0.01, 0.01, 0.01]} />
+            
+            <DampedOrbitControls />
+            <CameraRigController
+              cameraBaseY={initialCameraPosition[1]}
+              cameraBaseZ={initialCameraPosition[2]}
+            />
+            <CameraShake {...shakeConfig} />
 
-            return (
-              <group key={item.year}>
-                <Cube position={cubePosition} size={cubeDimensions} />
-                <Water
-                  position={cubePosition}
-                  size={cubeDimensions}
-                  nonScreenPercent={item.data.non_screen}
-                  screenPercent={item.data.screen}
-                />
-                <Year
-                  year={item.year}
-                  position={cubePosition}
-                  cubeSize={cubeDimensions}
-                />
-              </group>
-            );
-          })}
+            <mesh
+              position={[0, -3.2, 0]}
+              rotation={[-Math.PI / 2, 0, 0]}
+              receiveShadow
+            >
+              <planeGeometry args={[50, 50]} />
+              <meshStandardMaterial
+                color="#F1B3C1"
+                alphaMap={platformTexture}
+                transparent
+              />
+            </mesh>
+
+            {timelineData.map((item, index) => {
+              const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
+              const cubeDimensions: [number, number, number] = [2, 2, 2];
+
+              return (
+                <group key={item.year}>
+                  <Cube position={cubePosition} size={cubeDimensions} />
+                  <Water
+                    position={cubePosition}
+                    size={cubeDimensions}
+                    nonScreenPercent={item.data.non_screen}
+                    screenPercent={item.data.screen}
+                  />
+                  <Year
+                    year={item.year}
+                    position={cubePosition}
+                    cubeSize={cubeDimensions}
+                  />
+                </group>
+              );
+            })}
+          </Suspense>
         </Canvas>
       </div>
     </>
