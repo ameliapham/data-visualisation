@@ -2,21 +2,25 @@ import { useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
-export function CameraRigController() {
-  const [vec] = useState(() => new THREE.Vector3());
-  const { camera, mouse } = useThree();
+type Props = {
+  cameraBaseY: number;
+  cameraBaseZ: number;
+}
 
-  const cameraBaseY = 4;
-  const cameraBaseZ = 10;
+export function CameraRigController( props: Props) {
+  const { cameraBaseY, cameraBaseZ } = props;
+  const [vec] = useState(() => new THREE.Vector3());
+  const { camera, pointer } = useThree();
+
   const mouseInfluenceX = 2;
   const mouseInfluenceY = 1;
 
   useFrame(() => {
     camera.position.lerp(
       vec.set(
-        mouse.x * mouseInfluenceX,
-        cameraBaseY - mouse.y * mouseInfluenceY,
-        cameraBaseZ
+        pointer.x * mouseInfluenceX,
+        cameraBaseY - pointer.y * mouseInfluenceY,
+        cameraBaseZ 
       ),
       0.05
     );

@@ -2,7 +2,9 @@ import { tss } from "tss-react/mui";
 import { GlobalStyles } from "tss-react";
 import { Canvas } from "@react-three/fiber";
 import { Cube } from "./Cube";
-import { OrbitControls, Environment, CameraShake } from "@react-three/drei";
+import { CameraShake, Environment } from "@react-three/drei";
+import { DampedOrbitControls } from "./DampedOrbitControls";
+import { CameraRigController } from "./CameraRigController";
 import { Water } from "./Water";
 import { Controls } from "./Controls";
 import { useDataStore } from "./hooks/useDataStore";
@@ -22,8 +24,8 @@ export function App() {
       ];
 
   const shakeConfig = {
-    maxYaw: 0.05, 
-    maxPitch: 0.05, 
+    maxYaw: 0.05,
+    maxPitch: 0.05,
     maxRoll: 0.03,
     yawFrequency: 0.3,
     pitchFrequency: 0.3,
@@ -31,6 +33,8 @@ export function App() {
     intensity: 0.8,
     decay: false,
   };
+
+  const initialCameraPosition: [number, number, number] = [0, 2, 10];
 
   return (
     <>
@@ -45,11 +49,11 @@ export function App() {
       />
       <div className={classes.root}>
         <Controls />
-        <Canvas 
-          shadows 
-          camera={{ 
-            position: [0, 4, 10],
-            fov: 60 
+        <Canvas
+          shadows
+          camera={{
+            position: initialCameraPosition,
+            fov: 60,
           }}
         >
           <color attach="background" args={["#FFB6C1"]} />
@@ -67,8 +71,9 @@ export function App() {
             shadow-camera-top={15}
             shadow-camera-bottom={-15}
           />
-          <OrbitControls makeDefault/>
 
+          <DampedOrbitControls />
+          <CameraRigController cameraBaseY={initialCameraPosition[1]} cameraBaseZ={initialCameraPosition[2]}/> 
           <CameraShake {...shakeConfig} />
 
           <mesh
@@ -79,9 +84,12 @@ export function App() {
             <planeGeometry args={[50, 50]} />
             <meshStandardMaterial color="#F1B3C1" />
           </mesh>
-
           {timelineData.map((item, index) => {
-            const cubePosition: [number, number, number] = [index * 3 - 4.5, -2, 0,];
+            const cubePosition: [number, number, number] = [
+              index * 3 - 4.5,
+              -2,
+              0,
+            ];
             const cubeDimensions: [number, number, number] = [2, 2, 2];
 
             return (
