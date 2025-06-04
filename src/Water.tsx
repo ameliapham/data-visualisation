@@ -49,7 +49,7 @@ export function Water({
           receiveShadow
         >
           <meshPhysicalMaterial
-            color="#3498DB"
+            color="#a2d2ff"
             transparent
             opacity={0.85}
             roughness={0.08}
@@ -74,7 +74,7 @@ export function Water({
           receiveShadow
         >
           <meshPhysicalMaterial
-            color="#E74C3C"
+            color="#ffafcc"
             transparent
             opacity={0.85}
             roughness={0.08}
