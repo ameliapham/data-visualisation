@@ -7,7 +7,7 @@
 # Entertainment Evolution Visualization
 A beautiful 3D data visualization project built with React Three Fiber that displays the evolution of entertainment consumption across different countries and years.
 
-**Live Demo:** [Experience it here](https://ap-data-visualisation.vercel.app/)
+**Live Demo:** [Experience it here](https://amelia-data-visualisation.vercel.app/)
 
 ## ✨ Key Features
 - **Interactive 3D Visualization** - Explore data in immersive 3D space
